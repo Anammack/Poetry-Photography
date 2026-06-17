@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-sage: #67746B;
+    --color-burnt-orange: #AF4404;
+    --color-maroon: #782A3A;
+    --color-dark: #2a2420;
+    --color-light: #f5f3f0;
+    --color-accent: #c9b8a8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 30px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    padding-top: 40px;
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: var(--color-burnt-orange);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    color: var(--color-sage);
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+}
+
+.decorative-line {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, var(--color-sage), var(--color-burnt-orange), var(--color-maroon));
+    margin: 0 auto;
+    position: relative;
+}
+
+.decorative-line::before,
+.decorative-line::after {
+    content: '✦';
+    position: absolute;
+    top: -8px;
+    color: var(--color-burnt-orange);
+    font-size: 1rem;
+}
+
+.decorative-line::before {
+    left: -25px;
+}
+
+.decorative-line::after {
+    right: -25px;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    font-family: 'Courier Prime', monospace;
+    color: var(--color-sage);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.nav-link:hover {
+    color: var(--color-burnt-orange);
+    text-shadow: 0 0 10px rgba(175, 68, 4, 0.3);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--color-burnt-orange);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Section Styling */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--color-burnt-orange);
+    text-align: center;
+}
+
+.accent-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-maroon);
+    opacity: 0.6;
+}
+
+.accent-left {
+    margin-right: 20px;
+}
+
+.accent-right {
+    margin-left: 20px;
+}
+
+/* Poetry Section */
+.poetry-section {
+    margin-bottom: 120px;
+}
+
+.poems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.poem-card {
+    background-color: rgba(167, 117, 107, 0.08);
+    border-left: 3px solid var(--color-sage);
+    padding: 35px;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.poem-card:hover {
+    border-left-color: var(--color-burnt-orange);
+    background-color: rgba(175, 68, 4, 0.08);
+    transform: translateY(-5px);
+}
+
+.poem-card.offset {
+    margin-top: 60px;
+}
+
+.poem-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.2rem;
+    color: var(--color-burnt-orange);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.poem-text {
+    color: var(--color-light);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.poem-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--color-sage);
+    letter-spacing: 1px;
+}
+
+/* Photography Section */
+.photography-section {
+    margin-bottom: 120px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.photo-card {
+    text-align: center;
+    position: relative;
+}
+
+.photo-card.offset-photo {
+    margin-top: 80px;
+}
+
+.photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 2px solid var(--color-sage);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(42, 36, 32, 0.6));
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.photo-card:hover .photo-frame {
+    border-color: var(--color-burnt-orange);
+    box-shadow: 0 8px 30px rgba(175, 68, 4, 0.25);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: saturate(0.85) brightness(0.9);
+}
+
+.photo-card:hover .gallery-img {
+    transform: scale(1.05);
+    filter: saturate(1) brightness(1);
+}
+
+.photo-caption {
+    font-family: 'Courier Prime', monospace;
+    color: var(--color-sage);
+    font-size: 0.85rem;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* About Section */
+.about-section {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 50px 40px;
+    background-color: rgba(103, 116, 107, 0.05);
+    border: 1px solid rgba(175, 68, 4, 0.2);
+    position: relative;
+}
+
+.about-content::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 3rem;
+    color: var(--color-burnt-orange);
+    opacity: 0.3;
+}
+
+.about-text {
+    color: var(--color-light);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.9;
+}
+
+.about-text:last-of-type {
+    margin-bottom: 0;
+    font-style: italic;
+    color: var(--color-accent);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid rgba(175, 68, 4, 0.2);
+    color: var(--color-sage);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 8px 0;
+    letter-spacing: 1px;
+}
+
+.footer-year {
+    color: var(--color-maroon);
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .nav {
+        gap: 30px;
+    }
+
+    .poems-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .poem-card.offset,
+    .photo-card.offset-photo {
+        margin-top: 0;
+    }
+
+    .section-header {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .poem-card,
+    .photo-placeholder {
+        padding: 20px;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.poem-card,
+.photo-card {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.poem-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.poem-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.poem-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-sage);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-burnt-orange);
+}
