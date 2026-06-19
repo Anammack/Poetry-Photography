@@ -45,10 +45,18 @@ document.querySelectorAll('.poetry-section, .photography-section, .about-section
     observer.observe(section);
 });
 
-// Add subtle cursor pointer to gallery images
-document.querySelectorAll('.gallery-img').forEach(img => {
-    img.style.cursor = 'pointer';
-});
+// Playlist toggle
+function togglePlaylist(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.toggle-arrow');
+    const hint = header.querySelector('.toggle-hint');
+    const isOpen = body.classList.contains('open');
+
+    body.classList.toggle('open');
+    header.classList.toggle('open');
+    arrow.textContent = isOpen ? '▾' : '▴';
+    hint.textContent = isOpen ? '— click to expand —' : '— click to collapse —';
+}
 
 // Add typewriter effect to subtitle (optional enhancement)
 const subtitle = document.querySelector('.subtitle');
