@@ -23,27 +23,31 @@ window.addEventListener('scroll', () => {
 });
 
 // Intersection Observer for fade-in animations
+// Uses a safe rootMargin and disconnects after triggering so sections never get stuck invisible
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px 0px 0px'
 };
 
-const observer = new IntersectionObserver(function (entries) {
+const observer = new IntersectionObserver(function (entries, obs) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            obs.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe sections for animation
-document.querySelectorAll('.poetry-section, .photography-section, .about-section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'all 0.6s ease-out';
-    observer.observe(section);
-});
+// Observe sections — skip the fade-in entirely on small screens
+if (window.innerWidth > 600) {
+    document.querySelectorAll('.poetry-section, .photography-section, .about-section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.6s ease-out';
+        observer.observe(section);
+    });
+}
 
 // Playlist toggle
 function togglePlaylist(header) {
